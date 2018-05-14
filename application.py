@@ -15,9 +15,6 @@ def hello():
 	return result
 
 
-@app.route('/con')
-def con():
-	return "co"
 
 app.run(host="0.0.0.0")
 
