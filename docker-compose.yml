@@ -1,0 +1,13 @@
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+           - "5000:5000"
+        
+    db:
+        image: postgres
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+          -  "5672:5672"
