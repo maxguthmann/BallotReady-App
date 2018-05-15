@@ -5,14 +5,14 @@ app= Flask(__name__)
 
 @app.route('/')
 def hello():
-	conn=psycopg2.connect(host='postgres', user='postgres')
+	conn=psycopg2.connect(host='db', user='postgres')
 	cur=conn.cursor()
-	cur.execute("CREATE TABLE tab(col INTEGER)")
-	cur.execute("INSERT INTO tab(col) VALUES(1,2,3)")
+	cur.execute("CREATE TABLE IF NOT EXISTS tab(col INTEGER)")
+	cur.execute("INSERT INTO tab(col) VALUES(1)")
 	conn.commit()
 	cur.execute("SELECT * FROM tab")
-	result=cur.fetchall()
-	return result
+	result=cur.fetchone()
+	return str(result)
 
 
 
